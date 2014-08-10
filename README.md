@@ -22,7 +22,7 @@ xliffle = Xliffle.new
 
 ```
 file = xliffle.file('de.po', 'de', 'en')
-=> #<Xliffle::File:0x007fea48d4ac08 @strings=[], @original="de.po", @source_locale="de", @target_locale="en">
+=> #<Xliffle::File:0x007ff523bd9ca8 @id=1, @strings=[], @original="de.po", @source_locale="de", @target_locale="en">
 ```
 
 Parameters:
@@ -35,17 +35,18 @@ Parameters:
 
 ```
 file.string('admin.foo_bar','Foo', 'Bar')
-=> #<Xliffle::String:0x007fea48ea6020 @id="admin.foo_bar", @source="Foo", @target="Bar">
+=> #<Xliffle::String:0x007ff523bc2030 @id=1, @name="admin.foo_bar", @source="Foo", @target="Bar">
 ```
 
 Parameters:
-
+* name - identifier for the string
 * source string
 * target string
 
 ### Export to file
 
-```xliffle.to_file
+```
+xliffle.to_file
 => #<Tempfile:/var/folders/61/2s8jsjln4vg_7tp6bpp0yrg40000gn/T/foo.xlf20140810-19106-11vhjba>
 ```
 
@@ -55,7 +56,7 @@ Returns temporary xliff-file
 
 ```
 xliffle.to_xliff
-=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
+=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"1\" resname=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
 ```
 
 Returns xliff structure as string

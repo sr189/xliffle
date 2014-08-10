@@ -9,7 +9,7 @@ module Xliffle
     end
 
     def file(original, source_locale, target_locale)
-      file = Xliffle::File.new(original, source_locale, target_locale)
+      file = Xliffle::File.new(file_id, original, source_locale, target_locale)
       @files << file
       file
     end
@@ -30,6 +30,10 @@ module Xliffle
     end
 
     private
+
+    def file_id
+      @files.length.succ
+    end
 
     def xml(&block)
       xml = Builder::XmlMarkup.new( :indent => 2 )

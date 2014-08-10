@@ -3,7 +3,6 @@ PATH
   specs:
     xliffle (0.0.1)
       rails (~> 4.1.4)
-      rspec
 
 GEM
   remote: https://rubygems.org/

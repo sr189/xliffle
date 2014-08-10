@@ -13,4 +13,6 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'rspec'
+group :development do
+  gem 'rspec'
+end

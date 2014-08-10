@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xliffle (0.0.3)
+    xliffle (0.0.4)
       builder
       rails (~> 4.1.4)
 

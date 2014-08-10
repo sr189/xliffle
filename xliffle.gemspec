@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Xliffle::VERSION
   s.authors     = ["Stefan Rohde"]
   s.email       = ["info@rohdenetz.de"]
-  s.homepage    = "http://www.rohdenetz.de"
+  s.homepage    = "https://github.com/sr189/xliffle"
   s.summary     = "Gem to create XLIFF files"
-  s.description = "Creates XLIFF files."
+  s.description = "A gem to build XLIFF files with translated strings."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

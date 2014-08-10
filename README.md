@@ -15,11 +15,17 @@ Add this line to your Gemfile:
 ## Usage
 ### Create an Xliffle instance
 
-`builder = Xliffle::Creator.new`
+```
+xliffle = Xliffle.new
+=> #<Xliffle::Creator:0x007fea48d31690 @files=[]>
+```
 
 ### Add a file
 
-`file = builder.file('de.po', 'de', 'en')`
+```
+file = xliffle.file('de.po', 'de', 'en')
+=> #<Xliffle::File:0x007fea48d4ac08 @strings=[], @original="de.po", @source_locale="de", @target_locale="en">
+```
 
 Parameters:
 
@@ -29,7 +35,10 @@ Parameters:
 
 ### Add a string to a file
 
-`file.string('Foo', 'Bar')`
+```
+file.string('admin.foo_bar','Foo', 'Bar')
+=> #<Xliffle::String:0x007fea48ea6020 @id="admin.foo_bar", @source="Foo", @target="Bar">
+```
 
 Parameters:
 
@@ -38,13 +47,18 @@ Parameters:
 
 ### Create a Xliff file
 
-`builder.to_file`
+```xliffle.to_file
+=> #<Tempfile:/var/folders/61/2s8jsjln4vg_7tp6bpp0yrg40000gn/T/foo.xlf20140810-19106-11vhjba>
+```
 
 Returns temporary xliff-file
 
 ### Create a Xliff string
 
-`builder.to_xliff`
+```
+xliffle.to_xliff
+=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
+```
 
 Returns xliff structure as string
 

@@ -7,7 +7,7 @@ This is an very early implementation.
 ## Installation
 Add this line to your Gemfile:
 
-`gem 'xliffle', :git => "git://github.com/sr189/xliffle.git"`
+`gem 'xliffle'`
 
 
 ## Usage

@@ -1,7 +1,5 @@
 # Xliffle
-Gem to create an xliff file.
-
-Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
+Gem to create a xliff file. Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
 
 ## Warning
 This is an very early implementation.
@@ -13,14 +11,14 @@ Add this line to your Gemfile:
 
 
 ## Usage
-### Create an Xliffle instance
+### Create a Xliffle instance
 
 ```
 xliffle = Xliffle.new
 => #<Xliffle::Creator:0x007fea48d31690 @files=[]>
 ```
 
-### Add a file
+### Add file
 
 ```
 file = xliffle.file('de.po', 'de', 'en')
@@ -33,7 +31,7 @@ Parameters:
 * source locale code
 * target locale code
 
-### Add a string to a file
+### Add a string to file
 
 ```
 file.string('admin.foo_bar','Foo', 'Bar')
@@ -45,7 +43,7 @@ Parameters:
 * source string
 * target string
 
-### Create a Xliff file
+### Export to file
 
 ```xliffle.to_file
 => #<Tempfile:/var/folders/61/2s8jsjln4vg_7tp6bpp0yrg40000gn/T/foo.xlf20140810-19106-11vhjba>
@@ -53,7 +51,7 @@ Parameters:
 
 Returns temporary xliff-file
 
-### Create a Xliff string
+### Export to string
 
 ```
 xliffle.to_xliff

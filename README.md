@@ -1,5 +1,5 @@
 # Xliffle
-Gem to create a xliff file. Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
+Gem to create xliff files from translated strings. Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
 
 ## Warning
 This is an very early implementation.

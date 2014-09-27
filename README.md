@@ -66,6 +66,10 @@ Returns xliff structure as string
 
 * Stefan Rohde (@Stefan_Rohde, http://www.rohdenetz.de, info@rohdenetz.de)
 
+## Thanks to
+
+* Toptranslation GmbH, Hamburg - my work, my team and my beloved hobby - @toptranslation, https://www.toptranslation.com
+    
 ## License
 
 MIT License. Copyright Stefan Rohde

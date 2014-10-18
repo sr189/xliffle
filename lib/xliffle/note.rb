@@ -2,9 +2,9 @@ module Xliffle
   class Note
     attr_reader :note, :priority
 
-    def initialize(note, priority)
+    def initialize(note, options={})
       @note = note
-      @priority = priority
+      @priority = options[:priority] || 2
     end
 
     def to_xliff(xliff)

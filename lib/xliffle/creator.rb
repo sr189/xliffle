@@ -1,4 +1,5 @@
 require 'builder'
+require 'tempfile'
 
 module Xliffle
   class Creator

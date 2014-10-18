@@ -2,7 +2,7 @@
 A Gem to create xliff files from translated strings. Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
 
 ## Warning
-This is a very early implementation.
+This is still an early implementation.
 
 ## Installation
 Add this line to your Gemfile:

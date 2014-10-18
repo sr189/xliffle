@@ -1,6 +1,7 @@
 require 'xliffle/creator'
 require 'xliffle/file'
 require 'xliffle/string'
+require 'xliffle/note'
 
 module Xliffle
   def self.new

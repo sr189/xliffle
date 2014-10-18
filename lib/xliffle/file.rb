@@ -17,10 +17,10 @@ module Xliffle
     end
 
     def to_xliff(xliff)
-      xliff.file(original: @original, datatype: 'plaintext', 'source-language' => @source_locale, 'target-language' => @target_locale,) do |f|
-        f.body do |b|
+      xliff.file(original: @original, datatype: 'plaintext', 'source-language' => @source_locale, 'target-language' => @target_locale,) do |file|
+        file.body do |body|
           self.strings.each do |string|
-            string.to_xliff(b)
+            string.to_xliff(body)
           end
         end
       end

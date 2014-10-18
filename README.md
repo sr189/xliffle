@@ -1,8 +1,8 @@
 # Xliffle
-Gem to create xliff files from translated strings. Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
+A Gem to create xliff files from translated strings. Implementing version 1.2 of XLIFF specification: [Xliff-Specification](http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
 
 ## Warning
-This is an very early implementation.
+This is a very early implementation.
 
 ## Installation
 Add this line to your Gemfile:
@@ -13,53 +13,74 @@ Add this line to your Gemfile:
 ## Usage
 ### Create a Xliffle instance
 
+#### Example####
+
 ```
 xliffle = Xliffle.new
 => #<Xliffle::Creator:0x007fea48d31690 @files=[]>
 ```
 
-### Add file
+### Add a file to Xliffle instance
 
+**xliffle.file**(filename, source_locale_code, target_locale_code)
+
+#### Example ####
 ```
 file = xliffle.file('de.po', 'de', 'en')
-=> #<Xliffle::File:0x007ff523bd9ca8 @id=1, @strings=[], @original="de.po", @source_locale="de", @target_locale="en">
+=> #<Xliffle::File...>
 ```
 
-Parameters:
+### Add a string to file instance
 
-* Original-file
-* source locale code
-* target locale code
+**file.string**(name, source_string, target_string)
 
-### Add a string to file
+#### Example ####
 
 ```
-file.string('admin.foo_bar','Foo', 'Bar')
-=> #<Xliffle::String:0x007ff523bc2030 @id=1, @name="admin.foo_bar", @source="Foo", @target="Bar">
+string = file.string('admin.foo_bar','Foo', 'Bar')
+# => #<Xliffle::String...>
 ```
 
-Parameters:
-* name - identifier for the string
-* source string
-* target string
+### Add a note to string instance
+Xliffle supports Xliff localization notes (as structural elements).
+
+**string.note**(note, options = {})
+
+#### Options ####
+
+* *:priority* - Sets the priority of the note (default: 2)
+
+#### Example ####
+
+```
+string.note('This is localization comment', prioirity: 2)
+#=> #<Xliffle::Note...>
+```
+
 
 ### Export to file
 
+**to_xliff()**
+
+Returns xliff-file
+
+#### Example ####
 ```
 xliffle.to_file
-=> #<Tempfile:/var/folders/61/2s8jsjln4vg_7tp6bpp0yrg40000gn/T/foo.xlf20140810-19106-11vhjba>
+# => #<Tempfile...>
 ```
-
-Returns temporary xliff-file
 
 ### Export to string
 
+Exports XML-markup to a string
+
+**to_string()**
+#### Example ####
+
 ```
 xliffle.to_xliff
-=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"1\" resname=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
+=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"1\" resname=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target><note priority=\"2\">This is localization comment</note>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
 ```
-
-Returns xliff structure as string
 
 
 ## Contributors
@@ -68,7 +89,7 @@ Returns xliff structure as string
 
 ## Thanks to
 
-* Toptranslation GmbH, Hamburg - my work, my team and my beloved hobby - @toptranslation, https://www.toptranslation.com
+* Toptranslation GmbH, Hamburg - my work, my team, my beloved hobby - @toptranslation, https://www.toptranslation.com
     
 ## License
 

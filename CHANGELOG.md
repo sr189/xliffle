@@ -12,4 +12,4 @@ Documentation:
 Features:
 
 + Introducing a Changelog
-
++ Introducing basic specs for Xliffle::String and Xliffle::File

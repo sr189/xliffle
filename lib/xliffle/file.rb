@@ -10,8 +10,8 @@ module Xliffle
       @target_locale = target_locale
     end
 
-    def string(name, source, target)
-      string = Xliffle::String.new(string_id, name, source, target)
+    def string(id, source, target, options={})
+      string = Xliffle::String.new(id, source, target, options)
       @strings << string
       string
     end
@@ -24,12 +24,6 @@ module Xliffle
           end
         end
       end
-    end
-
-    private
-
-    def string_id
-      "#{ @id }_#{ @strings.length.succ }"
     end
   end
 end

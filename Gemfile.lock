@@ -1,20 +1,25 @@
 PATH
   remote: .
   specs:
-    xliffle (0.0.6)
+    xliffle (0.1.0)
       builder (~> 3.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.0.0)
     builder (3.2.2)
     coderay (1.1.0)
     diff-lcs (1.2.5)
     method_source (0.8.2)
+    oga (0.2.0)
+      ast
+      racc (~> 1.4, >= 1.4.12)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    racc (1.4.12)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -33,6 +38,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  oga
   pry (~> 0.9)
   rspec (~> 3)
   xliffle!

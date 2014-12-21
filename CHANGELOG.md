@@ -1,4 +1,4 @@
-## 0.2.0
+## 0.2.0 (December 21, 2014)
 
 Breaking Changes:
 
@@ -8,4 +8,8 @@ Breaking Changes:
 Documentation:
 
 + Changed wrong method-name from `.to_string` to `.to_xliff` in README
+
+Features:
+
++ Introducing a Changelog
 

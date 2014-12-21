@@ -85,11 +85,11 @@ xliffle.to_file
 # => #<Tempfile...>
 ```
 
-### Export to string
+### Export to Xliff string
 
 Exports XML-markup to a string
 
-**to_string()**
+**to_xliff()**
 #### Example ####
 
 ```

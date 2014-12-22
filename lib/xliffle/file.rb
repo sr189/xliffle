@@ -2,8 +2,7 @@ module Xliffle
   class File
     attr_reader :original, :strings, :source_locale, :target_locale
 
-    def initialize(id, original, source_locale, target_locale)
-      @id = id
+    def initialize(original, source_locale, target_locale)
       @strings = []
       @original = original
       @source_locale = source_locale

@@ -2,14 +2,12 @@ require 'spec_helper'
 require 'oga'
 
 describe Xliffle::File do
-
-  let(:id) { 'Foobar' }
   let(:source_locale) { 'de' }
   let(:target_locale) { 'en' }
   let(:original) { 'original.file' }
 
   let(:xml) { Builder::XmlMarkup.new( :indent => 2 ) }
-  let(:file) { Xliffle::File.new(id, original, source_locale, target_locale) }
+  let(:file) { Xliffle::File.new(original, source_locale, target_locale) }
   let(:xliff) { file.to_xliff(xml) }
   let(:xml_document) { Oga.parse_xml(xliff) }
 

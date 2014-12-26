@@ -38,7 +38,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  oga
+  oga (~> 0.2)
   pry (~> 0.9)
   rspec (~> 3)
   xliffle!

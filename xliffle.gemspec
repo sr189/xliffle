@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rspec", "~> 3"
   s.add_development_dependency "pry", "~> 0.9"
+  s.add_development_dependency "oga"
 end

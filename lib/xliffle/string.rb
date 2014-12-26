@@ -1,12 +1,12 @@
 module Xliffle
   class String
-    attr_reader :name, :source, :target, :notes
+    attr_reader :id, :source, :target, :notes, :resource_name
 
-    def initialize(id, name, source_string, target_string)
+    def initialize(id, source_string, target_string, options={})
       @id = id
-      @name = name
       @source_string = source_string
       @target_string = target_string
+      @resource_name = options[:resource_name]
       @notes = []
     end
 
@@ -17,13 +17,22 @@ module Xliffle
     end
 
     def to_xliff(xliff)
-      xliff.tag!('trans-unit', { id: @id, resname: @name }) do |tag|
+      xliff.tag!('trans-unit', attributes) do |tag|
         tag.source(@source_string)
         tag.target(@target_string)
         @notes.each do |note|
           note.to_xliff(tag)
         end
       end
+    end
+
+    private
+
+    def attributes
+      attributes = { id: @id }
+      attributes[:resname] = @resource_name if @resource_name
+
+      attributes
     end
   end
 end

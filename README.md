@@ -32,7 +32,7 @@ file = xliffle.file('de.po', 'de', 'en')
 
 ### Add a string to file instance
 
-**file.string**(name, source_string, target_string)
+**file.string**(name, source_string, target_string, options={})
 
 #### Example ####
 
@@ -40,6 +40,21 @@ file = xliffle.file('de.po', 'de', 'en')
 string = file.string('admin.foo_bar','Foo', 'Bar')
 # => #<Xliffle::String...>
 ```
+
+#### Options
+
+The options-hash may take the following optional attributes
+
+* resource_name
+
+###### Example with optional resource_name
+
+```
+second_string = file.string('user.bar_foo','Bar', 'Foo', { resource_name: 'foo.bar.header' })
+# => #<Xliffle::String...>
+```
+
+
 
 ### Add a note to string instance
 Xliffle supports Xliff localization notes (as structural elements).
@@ -70,16 +85,37 @@ xliffle.to_file
 # => #<Tempfile...>
 ```
 
-### Export to string
+### Export to Xliff string
 
 Exports XML-markup to a string
 
-**to_string()**
+**to_xliff()**
 #### Example ####
 
 ```
 xliffle.to_xliff
-=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"1\" resname=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target><note priority=\"2\">This is localization comment</note>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
+=> "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\">\n  <file original=\"de.po\" datatype=\"plaintext\" source-language=\"de\" target-language=\"en\">\n    <body>\n      <trans-unit id=\"admin.foo_bar\">\n        <source>Foo</source>\n        <target>Bar</target>\n        <note priority=\"2\">This is localization comment</note>\n      </trans-unit>\n      <trans-unit id=\"user.bar_foo\" resname=\"foo.bar.header\">\n        <source>Bar</source>\n        <target>Foo</target>\n      </trans-unit>\n    </body>\n  </file>\n</xliff>\n"
+```
+
+##### Rendered Example Output
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="de.po" datatype="plaintext" source-language="de" target-language="en">
+        <body>
+            <trans-unit id="admin.foo_bar">
+                <source>Foo</source>
+                <target>Bar</target>
+                <note priority="2">This is localization comment</note>            
+            </trans-unit>
+            <trans-unit id="user.bar_foo" resname="foo.bar.header">
+                <source>Bar</source>
+                <target>Foo</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
 ```
 
 

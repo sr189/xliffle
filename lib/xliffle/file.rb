@@ -2,16 +2,15 @@ module Xliffle
   class File
     attr_reader :original, :strings, :source_locale, :target_locale
 
-    def initialize(id, original, source_locale, target_locale)
-      @id = id
+    def initialize(original, source_locale, target_locale)
       @strings = []
       @original = original
       @source_locale = source_locale
       @target_locale = target_locale
     end
 
-    def string(name, source, target)
-      string = Xliffle::String.new(string_id, name, source, target)
+    def string(id, source, target, options={})
+      string = Xliffle::String.new(id, source, target, options)
       @strings << string
       string
     end
@@ -24,12 +23,6 @@ module Xliffle
           end
         end
       end
-    end
-
-    private
-
-    def string_id
-      "#{ @id }_#{ @strings.length.succ }"
     end
   end
 end

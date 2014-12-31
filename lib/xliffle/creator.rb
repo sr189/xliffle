@@ -10,7 +10,7 @@ module Xliffle
     end
 
     def file(original, source_locale, target_locale)
-      file = Xliffle::File.new(file_id, original, source_locale, target_locale)
+      file = Xliffle::File.new(original, source_locale, target_locale)
       @files << file
       file
     end

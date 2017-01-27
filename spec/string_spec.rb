@@ -1,3 +1,4 @@
+require 'pry'
 require 'spec_helper'
 require 'oga'
 
@@ -31,6 +32,11 @@ describe Xliffle::String do
     it "should output correct note" do
       string.note(note, { priority: 1 })
       expect(Oga.parse_xml(string.to_xliff(xml)).xpath('string(trans-unit/note)')).to eq(note)
+    end
+
+    it "should use default priority of 2" do
+      string.note(note)
+      expect(Oga.parse_xml(string.to_xliff(xml)).xpath('string(trans-unit/note/@priority)')).to eq("2")
     end
   end
 

@@ -11,7 +11,7 @@ module Xliffle
     end
 
     def note(note, priority=2)
-      note = Xliffle::Note.new(note, priority)
+      note = Xliffle::Note.new(note, priority: priority)
       @notes << note
       note
     end

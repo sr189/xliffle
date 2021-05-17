@@ -1,5 +1,6 @@
 .bundle/
 .DS_Store
+.rubyversion
 log/*.log
 pkg/
 test/dummy/db/*.sqlite3

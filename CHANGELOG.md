@@ -1,3 +1,11 @@
+## 0.3.0
+Features:
++ Adds option to wrap content of a string in a CDATA section
+
+Maintenance:
++ Updates dependencies
++ Introduces Rubocop
+
 ## 0.2.2
 Bugs:
 

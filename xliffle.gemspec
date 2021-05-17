@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Gem to create XLIFF files'
   s.description = 'A gem to build XLIFF files from translated strings.'
   s.license     = 'MIT'
-  s.required_ruby_version = '2.7.3'
+  s.required_ruby_version = '>= 2.7', '< 4'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['test/**/*']

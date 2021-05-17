@@ -64,5 +64,25 @@ describe Xliffle::String do
       )
     end
   end
+
+  context 'empty source segment' do
+    it 'should use cdata instead of text' do
+      xliff = Xliffle::String.new(id, nil, target).to_xliff(xml)
+
+      expect(xliff).to eq(
+        '<trans-unit id="Foobar"><source/><target>Bar</target></trans-unit>'
+      )
+    end
+  end
+
+  context 'empty target segment' do
+    it 'should use cdata instead of text' do
+      xliff = Xliffle::String.new(id, source, nil).to_xliff(xml)
+
+      expect(xliff).to eq(
+        '<trans-unit id="Foobar"><source>Foo</source><target/></trans-unit>'
+      )
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

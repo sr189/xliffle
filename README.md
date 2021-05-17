@@ -50,10 +50,20 @@ The options-hash may take the following optional attributes
 ###### Example with optional resource_name
 
 ```
-second_string = file.string('user.bar_foo','Bar', 'Foo', { resource_name: 'foo.bar.header' })
+second_string = file.string('user.bar_foo','Bar', 'Foo', resource_name: 'foo.bar.header')
 # => #<Xliffle::String...>
 ```
 
+* use_cdata
+
+If set wraps the content of the tag into a CDATA section
+
+###### Example with optional resource_name
+
+```
+second_string = file.string('user.bar_foo','Bar', 'Foo', use_cdata: true)
+# => #<Xliffle::String...>
+```
 
 
 ### Add a note to string instance
@@ -107,7 +117,7 @@ xliffle.to_xliff
             <trans-unit id="admin.foo_bar">
                 <source>Foo</source>
                 <target>Bar</target>
-                <note priority="2">This is localization comment</note>            
+                <note priority="2">This is localization comment</note>
             </trans-unit>
             <trans-unit id="user.bar_foo" resname="foo.bar.header">
                 <source>Bar</source>
@@ -126,7 +136,7 @@ xliffle.to_xliff
 ## Thanks to
 
 * Toptranslation GmbH, Hamburg - my work, my team, my beloved hobby - @toptranslation, https://www.toptranslation.com
-    
+
 ## License
 
 MIT License. Copyright Stefan Rohde

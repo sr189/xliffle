@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module Xliffle
   class String
-    attr_reader :id, :source, :target, :notes, :resource_name
+    attr_reader :id, :source, :target, :notes
 
-    def initialize(id, source_string, target_string, options={})
+    def initialize(id, source_string, target_string, options = {})
       @id = id
       @source_string = source_string
       @target_string = target_string
-      @resource_name = options[:resource_name]
+      @options = options
       @notes = []
     end
 
-    def note(note, priority=2)
+    def note(note, priority = 2)
       note = Xliffle::Note.new(note, priority: priority)
       @notes << note
       note
@@ -18,8 +20,14 @@ module Xliffle
 
     def to_xliff(xliff)
       xliff.tag!('trans-unit', attributes) do |tag|
-        tag.source(@source_string)
-        tag.target(@target_string)
+        tag.source do |tag|
+          segment(tag, @source_string)
+        end
+
+        tag.target do |tag|
+          segment(tag, @target_string)
+        end
+
         @notes.each do |note|
           note.to_xliff(tag)
         end
@@ -30,9 +38,17 @@ module Xliffle
 
     def attributes
       attributes = { id: @id }
-      attributes[:resname] = @resource_name if @resource_name
+      attributes[:resname] = @options[:resource_name] if @options[:resource_name]
 
       attributes
+    end
+
+    def segment(tag, value)
+      if @options[:use_cdata]
+        tag.cdata!(value)
+      else
+        tag.text!(value)
+      end
     end
   end
 end

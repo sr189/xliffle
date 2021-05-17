@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'xliffle/creator'
 require 'xliffle/file'
 require 'xliffle/string'

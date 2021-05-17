@@ -4,6 +4,7 @@ require 'pry'
 require 'spec_helper'
 require 'oga'
 
+# rubocop:disable Metrics/BlockLength
 describe Xliffle::String do
   let(:id) { 'Foobar' }
   let(:source) { 'Foo' }
@@ -58,7 +59,10 @@ describe Xliffle::String do
     it 'should use cdata instead of text' do
       xliff = Xliffle::String.new(id, source, target, { use_cdata: true }).to_xliff(xml)
 
-      expect(xliff).to eq('<trans-unit id="Foobar"><source><![CDATA[Foo]]></source><target><![CDATA[Bar]]></target></trans-unit>')
+      expect(xliff).to eq(
+        '<trans-unit id="Foobar"><source><![CDATA[Foo]]></source><target><![CDATA[Bar]]></target></trans-unit>'
+      )
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

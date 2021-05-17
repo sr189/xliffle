@@ -20,13 +20,7 @@ module Xliffle
 
     def to_xliff(xliff)
       xliff.tag!('trans-unit', attributes) do |tag|
-        tag.source do |tag|
-          segment(tag, @source_string)
-        end
-
-        tag.target do |tag|
-          segment(tag, @target_string)
-        end
+        add_segments(tag)
 
         @notes.each do |note|
           note.to_xliff(tag)
@@ -41,6 +35,16 @@ module Xliffle
       attributes[:resname] = @options[:resource_name] if @options[:resource_name]
 
       attributes
+    end
+
+    def add_segments(tag)
+      tag.source do |xml|
+        segment(xml, @source_string)
+      end
+
+      tag.target do |xml|
+        segment(xml, @target_string)
+      end
     end
 
     def segment(tag, value)

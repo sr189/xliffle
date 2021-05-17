@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'builder'
 require 'tempfile'
 
@@ -25,7 +27,7 @@ module Xliffle
 
     def to_file
       handle = Tempfile.new('foo.xlf')
-      handle.write self.to_xliff
+      handle.write to_xliff
       handle.close
       handle
     end
@@ -37,9 +39,9 @@ module Xliffle
     end
 
     def xml(&block)
-      xml = Builder::XmlMarkup.new( :indent => 2 )
-      xml.instruct! :xml, :encoding => "UTF-8"
-      xml.xliff({version: '1.2', xmlns: 'urn:oasis:names:tc:xliff:document:1.2'}, &block)
+      xml = Builder::XmlMarkup.new(indent: 2)
+      xml.instruct! :xml, encoding: 'UTF-8'
+      xml.xliff({ version: '1.2', xmlns: 'urn:oasis:names:tc:xliff:document:1.2' }, &block)
     end
   end
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xliffle (0.3.2)
+    xliffle (0.5.0)
       builder (~> 3.2)
 
 GEM

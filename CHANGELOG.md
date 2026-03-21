@@ -1,3 +1,10 @@
+<a name="0.5.1"></a>
+### 0.5.1 (2026-03-21)
+
+#### Fixes
+
+* Fix `no_escaping` option producing a spurious newline inside `<source>`/`<target>` tags when used with an indented `Builder::XmlMarkup` instance (builder >= 3.3.0)
+
 <a name="0.5.0"></a>
 ### 0.5.0 (2026-03-21)
 

@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
-require 'pry'
 require 'spec_helper'
 require 'oga'
 
-# rubocop:disable Metrics/BlockLength
-describe Xliffle::String do
+RSpec.describe Xliffle::String do
   let(:id) { 'Foobar' }
   let(:source) { 'Foo' }
   let(:target) { 'Bar' }
 
   let(:xml) { Builder::XmlMarkup.new(indent: 0) }
+  let(:fresh_xml) { Builder::XmlMarkup.new(indent: 0) }
   let(:string) { Xliffle::String.new(id, source, target) }
   let(:xml_document) { Oga.parse_xml(string.to_xliff(xml)) }
 
@@ -33,12 +32,12 @@ describe Xliffle::String do
 
     it 'should output correct note' do
       string.note(note, { priority: 1 })
-      expect(Oga.parse_xml(string.to_xliff(xml)).xpath('string(trans-unit/note)')).to eq(note)
+      expect(Oga.parse_xml(string.to_xliff(fresh_xml)).xpath('string(trans-unit/note)')).to eq(note)
     end
 
     it 'should use default priority of 2' do
       string.note(note)
-      expect(Oga.parse_xml(string.to_xliff(xml)).xpath('string(trans-unit/note/@priority)')).to eq('2')
+      expect(Oga.parse_xml(string.to_xliff(fresh_xml)).xpath('string(trans-unit/note/@priority)')).to eq('2')
     end
   end
 
@@ -52,6 +51,17 @@ describe Xliffle::String do
     it 'should set resname-attribute if resource_name is set' do
       xliff = Xliffle::String.new(id, source, target, { resource_name: resource_name }).to_xliff(xml)
       expect(Oga.parse_xml(xliff).xpath('string(trans-unit/@resname)')).to eq(resource_name)
+    end
+  end
+
+  context 'no escaping' do
+    it 'outputs raw XML without escaping' do
+      source_with_tags = 'Hello <x id="PH1" ctype="x-custom"/> world'
+      xliff = Xliffle::String.new(id, source_with_tags, target, { no_escaping: true }).to_xliff(xml)
+
+      expected = '<trans-unit id="Foobar"><source>Hello <x id="PH1" ctype="x-custom"/> world</source>' \
+                 '<target>Bar</target></trans-unit>'
+      expect(xliff).to eq(expected)
     end
   end
 
@@ -85,4 +95,3 @@ describe Xliffle::String do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

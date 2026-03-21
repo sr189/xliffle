@@ -3,8 +3,7 @@
 require 'spec_helper'
 require 'oga'
 
-# rubocop:disable Metrics/BlockLength
-describe Xliffle::File do
+RSpec.describe Xliffle::File do
   let(:source_locale) { 'de' }
   let(:target_locale) { 'en' }
   let(:original) { 'original.file' }
@@ -26,7 +25,7 @@ describe Xliffle::File do
     expect(xml_document.xpath('string(file/@target-language)')).to eq(target_locale)
   end
 
-  context :add_string do
+  context 'add_string' do
     it 'should add correct number of strings' do
       file.string('admin.foo_bar', 'Foo', 'Bar')
       xml_document = Oga.parse_xml(file.to_xliff(xml))
@@ -34,7 +33,7 @@ describe Xliffle::File do
       expect(xml_document.xpath('//file/body/trans-unit').count).to eq(1)
     end
 
-    it 'should add correct number of strings' do
+    it 'should add correct number of strings with different keys' do
       file.string('admin.foo_bar', 'Foo', 'Bar')
       file.string('admin.bar_foo', 'Bar', 'Foo')
       xml_document = Oga.parse_xml(file.to_xliff(xml))
@@ -43,4 +42,3 @@ describe Xliffle::File do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

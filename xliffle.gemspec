@@ -17,14 +17,8 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.required_ruby_version = '>= 2.7', '< 4'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
-  s.test_files = Dir['test/**/*']
+  s.files = Dir['lib/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
   s.add_dependency 'builder', '~> 3.2'
-
-  s.add_development_dependency 'oga', '~> 3.3'
-  s.add_development_dependency 'pry', '~> 0.14'
-  s.add_development_dependency 'rspec', '~> 3.10'
-  s.add_development_dependency 'rubocop', '~> 1.15'
-  s.add_development_dependency 'rubocop-rspec', '~> 2.3'
+  s.metadata['rubygems_mfa_required'] = 'true'
 end

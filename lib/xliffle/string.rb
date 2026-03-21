@@ -41,27 +41,41 @@ module Xliffle
     def add_source_segment(tag)
       return tag.source unless @source_string
 
-      tag.source do |xml|
-        segment(xml, @source_string)
+      if @options[:no_escaping]
+        inline_tag(tag, :source, @source_string)
+      else
+        tag.source do |xml|
+          segment(xml, @source_string)
+        end
       end
     end
 
     def add_target_segment(tag)
       return tag.target unless @target_string
 
-      tag.target do |xml|
-        segment(xml, @target_string)
+      if @options[:no_escaping]
+        inline_tag(tag, :target, @target_string)
+      else
+        tag.target do |xml|
+          segment(xml, @target_string)
+        end
       end
     end
 
     def segment(tag, value)
       if @options[:use_cdata] && value
         tag.cdata!(value)
-      elsif @options[:no_escaping] && value
-        tag << value
       else
         tag.text!(value)
       end
+    end
+
+    def inline_tag(tag, name, value)
+      tag.__send__(:_indent)
+      tag.__send__(:_start_tag, name, {})
+      tag.__send__(:_text, value)
+      tag.__send__(:_end_tag, name)
+      tag.__send__(:_newline)
     end
   end
 end

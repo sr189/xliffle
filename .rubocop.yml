@@ -1,6 +1,8 @@
 AllCops:
   NewCops: enable
-Documentation:
+  TargetRubyVersion: 3.4
+  SuggestExtensions: false
+Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
   Exclude:

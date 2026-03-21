@@ -26,17 +26,13 @@ module Xliffle
     end
 
     def to_file
-      handle = Tempfile.new('foo.xlf')
+      handle = Tempfile.new(['xliffle', '.xlf'])
       handle.write to_xliff
       handle.close
       handle
     end
 
     private
-
-    def file_id
-      @files.length.succ
-    end
 
     def xml(&block)
       xml = Builder::XmlMarkup.new(indent: 2)

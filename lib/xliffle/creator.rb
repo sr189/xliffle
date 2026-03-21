@@ -34,10 +34,10 @@ module Xliffle
 
     private
 
-    def xml(&block)
+    def xml(&)
       xml = Builder::XmlMarkup.new(indent: 2)
       xml.instruct! :xml, encoding: 'UTF-8'
-      xml.xliff({ version: '1.2', xmlns: 'urn:oasis:names:tc:xliff:document:1.2' }, &block)
+      xml.xliff({ version: '1.2', xmlns: 'urn:oasis:names:tc:xliff:document:1.2' }, &)
     end
   end
 end

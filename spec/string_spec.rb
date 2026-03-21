@@ -31,7 +31,7 @@ RSpec.describe Xliffle::String do
     let(:note) { 'This is a test comment.' }
 
     it 'should output correct note' do
-      string.note(note, { priority: 1 })
+      string.note(note, 1)
       expect(Oga.parse_xml(string.to_xliff(fresh_xml)).xpath('string(trans-unit/note)')).to eq(note)
     end
 

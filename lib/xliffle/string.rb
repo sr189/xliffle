@@ -13,7 +13,7 @@ module Xliffle
     end
 
     def note(note, priority = 2)
-      note = Xliffle::Note.new(note, priority: priority)
+      note = Xliffle::Note.new(note, priority:)
       @notes << note
       note
     end
@@ -57,6 +57,8 @@ module Xliffle
     def segment(tag, value)
       if @options[:use_cdata] && value
         tag.cdata!(value)
+      elsif @options[:no_escaping] && value
+        tag << value
       else
         tag.text!(value)
       end

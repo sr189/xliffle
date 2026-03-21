@@ -45,23 +45,30 @@ string = file.string('admin.foo_bar','Foo', 'Bar')
 
 The options-hash may take the following optional attributes
 
-* resource_name
+* `resource_name` — sets the `resname` attribute on the `trans-unit` element, used to identify the resource by name
 
-###### Example with optional resource_name
+###### Example with resource_name
 
 ```
 second_string = file.string('user.bar_foo','Bar', 'Foo', resource_name: 'foo.bar.header')
 # => #<Xliffle::String...>
 ```
 
-* use_cdata
+* `use_cdata` — wraps the content of source and target tags in a CDATA section
 
-If set wraps the content of the tag into a CDATA section
-
-###### Example with optional resource_name
+###### Example with use_cdata
 
 ```
 second_string = file.string('user.bar_foo','Bar', 'Foo', use_cdata: true)
+# => #<Xliffle::String...>
+```
+
+* `no_escaping` — outputs source and target content as raw XML without escaping, useful when the string already contains inline XML elements (e.g. placeholders)
+
+###### Example with no_escaping
+
+```
+second_string = file.string('user.bar_foo', 'Hello <x id="PH1"/>world', 'Hallo <x id="PH1"/>Welt', no_escaping: true)
 # => #<Xliffle::String...>
 ```
 
@@ -78,7 +85,7 @@ Xliffle supports Xliff localization notes (as structural elements).
 #### Example ####
 
 ```
-string.note('This is localization comment', prioirity: 2)
+string.note('This is localization comment', priority: 2)
 #=> #<Xliffle::Note...>
 ```
 
